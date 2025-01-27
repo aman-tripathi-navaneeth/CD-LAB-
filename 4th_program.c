@@ -47,7 +47,7 @@ void F() {
     } else {
         error = 1;
     }
-}
+} 
 
 int main() {
     printf("Enter an arithmetic expression: ");
