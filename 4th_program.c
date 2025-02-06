@@ -34,7 +34,7 @@ void T() {
     if (input[inde] == '*') {
         match('*');
         T();
-    }
+    }    
 }
 
 void F() {
