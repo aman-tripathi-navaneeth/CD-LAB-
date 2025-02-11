@@ -6,7 +6,7 @@ char input[100];
 int inde = 0;
 int error = 0;
 
-void E();
+void E();                           
 void T();
 void F();
 
