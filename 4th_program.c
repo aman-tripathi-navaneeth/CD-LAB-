@@ -7,7 +7,7 @@ int inde = 0;
 int error = 0;
 
 void E();                           
-void T();
+void T();             
 void F();
 
 
