@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-char input[100];
+char input[100];           
 int inde = 0;
 int error = 0;
 
