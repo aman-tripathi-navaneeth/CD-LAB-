@@ -9,7 +9,7 @@ int error = 0;
 void E();                           
 void T();             
 void F();
-                                     
+                                                    
 
 void match(char c) {
     if (input[inde] == c) {
