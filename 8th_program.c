@@ -75,3 +75,28 @@ void check() {
         }
     }
 }
+
+
+//output "
+// GRAMMAR is E->E+E 
+//  E->E*E 
+//  E->(E) 
+//  E->id
+// Enter input string: 
+// id+id\id+id 
+// stack 	 input 	 action
+
+// $id	  +id\id+id $	SHIFT->id
+// $E	  +id\id+id $	REDUCE TO E
+// $E	   id\id+id $	SHIFT->symbols
+// $E	     \id+id $	SHIFT->id
+// $E	     \id+id $	REDUCE TO E
+// $E	      id+id $	SHIFT->symbols
+// $E	        +id $	SHIFT->id
+// $E	        +id $	REDUCE TO E
+// $E	         id $	SHIFT->symbols
+// $E	            $	SHIFT->id
+// $E	            $	REDUCE TO E
+// $E	            $	SHIFT->symbols
+
+// === Code Execution Successful ===
