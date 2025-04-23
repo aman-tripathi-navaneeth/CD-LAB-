@@ -1,0 +1,61 @@
+8.b 
+AIM: In the myNotes application, include APIs based on the requirements provided. (i) 
+API should fetch the details of the notes based on a notesID which is provided in the 
+URL. Test URL - http://localhost:3000/notes/7555 (ii) API should update the details 
+DESCRIPTION: API development in Express.js involves creating API endpoints that can 
+handle incoming HTTP requests, process them, and send back appropriate responses. The 
+API endpoints can be used by clients to access and manipulate data or perform other 
+operations. 
+PROGRAM: 
+import express from 'express'; 
+import mongoose from 'mongoose'; 
+import { Note } from './models/note'; 
+const app = express(); 
+// connect to MongoDB database 
+mongoose.connect('mongodb://localhost/myNotes'); 
+// endpoint to fetch a note by its ID 
+app.get('/notes/:noteId', async (req, res) => { 
+ MEAN STACK TECHNOLOGIES LAB MANUAL   
+ 
+try { 
+const noteId = req.params.noteId; 
+const note = await Note.findById(noteId); 
+if (!note) { 
+return res.status(404).json({ message: 'Note not found' }); 
+} 
+res.json(note); 
+} catch (err) { 
+console.error(err); 
+res.status(500).json({ message: 'Internal server error' }); 
+} 
+}); 
+// start the server 
+app.listen(3000, () => { 
+console.log('Server started on port 3000'); 
+}); 
+OUTPUT: 
+As this code is meant to be run on a server, there won't be any visible output on the console. 
+However, we can test the API using a tool like Postman or a web browser. 
+Assuming that the API is running on localhost:3000, we can send a GET request to the 
+endpoint 
+/notes/7555 by visiting the URL http://localhost:3000/notes/7555 in a web browser or using 
+Postman. 
+If a note with ID 7555 exists in the database, its details will be returned as a JSON response. 
+For 
+example: 
+{ 
+"_id": "6159078f7b9ca2d3fcf3b2c8", 
+ 
+ 
+ MEAN STACK TECHNOLOGIES LAB MANUAL   
+ 
+ 
+ 
+"title": "Shopping list", 
+"content": "Milk, eggs, bread, cheese", 
+"createdAt": "2021-10-03T10:34:23.950Z", 
+"updatedAt": "2021-10-03T10:34:23.950Z", 
+" __ ": 0 
+}If a note with ID 7555 doesn't exist in the database, a 404 status code will be returned along 
+with a message. For example 
+{ "message": "Note not found" }
