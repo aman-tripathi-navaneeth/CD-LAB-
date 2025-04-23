@@ -1,0 +1,74 @@
+Experiment - 8.a 
+AIM: Write a program to perform various CRUD (Create-Read-Update-Delete) 
+operations using Mongoose library functions. 
+DESCRIPTION: CRUD (Create, Read, Update, Delete) operations are common operations 
+used in web development. In Express.js, we can perform CRUD operations using HTTP 
+methods like GET, POST, PUT, and DELETE. 
+PROGRAM: 
+const mongoose = require('mongoose'); 
+mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, 
+useUnifiedTopology: true }); 
+// Define schema 
+const userSchema = new mongoose.Schema({ 
+name: String, 
+email: String, 
+}); 
+// Define model 
+const User = mongoose.model('User', userSchema); 
+// Create a new user 
+const user = new User({ name: 'John', email: 'john@example.com' }); 
+user.save((err) => { 
+if (err) console.error(err); 
+console.log('User created successfully'); 
+}); 
+// Read all users 
+User.find((err, users) => { 
+if (err) console.error(err); 
+console.log(users); 
+}); 
+ 
+ 
+ 
+ 
+// Read user by ID 
+const id = '60519d4b4c4b5e5b5ca5e5d5'; 
+User.findById(id, (err, user) => { 
+if (err) console.error(err); 
+console.log(user); 
+}); 
+// Update user 
+User.findByIdAndUpdate(id, { name: 'Jane', email: 'jane@example.com' }, (err, user) => { 
+if (err) console.error(err); 
+console.log(user); 
+}); 
+// Delete user 
+User.findByIdAndDelete(id, (err) => { 
+if (err) console.error(err); 
+console.log('User deleted successfully'); 
+}); 
+OUTPUT: 
+User created successfully 
+[ 
+{ 
+_id: 60519d3c5da7cb5b37c358a7, 
+name: 'John', 
+email: 'john@example.com', 
+  v: 0 
+} 
+] 
+ MEAN STACK TECHNOLOGIES LAB MANUAL   
+ 
+ 
+ 
+_id: 60519d3c5da7cb5b37c358a7, 
+name: 'John', 
+email: 'john@example.com', 
+  v: 0 
+} 
+{ 
+_id: 60519d3c5da7cb5b37c358a7, 
+name: 'Jane', 
+email: 'jane@example.com', 
+  v: 0 
+} 
+User deleted successfully
